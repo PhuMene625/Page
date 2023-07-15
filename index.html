@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PhuMene's Page</title>
+  <style>
+    body {
+      background-color: #323337;
+      margin: 0;
+      padding: 0;
+    }
+
+    #title {
+      text-align: center;
+      font-size: 40px;
+      font-weight: bold;
+      font-style: italic;
+      font-family: sans-serif;
+      margin-top: 75px;
+      color: white;
+    }
+
+    #access-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 200px;
+      height: 80px;
+      margin: 20px auto;
+      background-color: lightgreen;
+      border: 2px solid darkgreen;
+      border-radius: 5%;
+      font-family: sans-serif;
+      font-size: 30px;
+      color: darkgreen;
+      cursor: pointer;
+    }
+
+    #access-button:hover {
+      background-color: darkgreen;
+      color: white;
+    }
+        #time {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: blue;
+      padding: 5px;
+      font-family: sans-serif;
+      font-size: 30px;
+      color: white;
+      border-radius: 5%;
+    }
+
+    #date {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: blue;
+      padding: 5px;
+      font-family: sans-serif;
+      font-size: 30px;
+      color: white;
+      border-radius: 5%;
+    }
+
+    .seconds {
+      font-size: 20px;
+      color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="title">Bienvenue sur la Page de PhuMene <br> Welcome to PhuMene's Page</h1>
+  <a href="page" id="access-button">Accéder</a>
+  <div id="time"></div>
+  <div id="date"></div>
+
+  <script>
+    function updateTime() {
+      var now = new Date();
+      var hours = now.getHours().toString().padStart(2, '0');
+      var minutes = now.getMinutes().toString().padStart(2, '0');
+      var seconds = now.getSeconds().toString().padStart(2, '0');
+      var timeString = hours + ':' + minutes;
+      var secondsString = '<span class="seconds">' + seconds + '</span>';
+      document.getElementById('time').innerHTML = timeString + secondsString;
+
+      var day = now.getDate().toString().padStart(2, '0');
+      var month = (now.getMonth() + 1).toString().padStart(2, '0');
+      var year = now.getFullYear();
+      var dateString = day + '/' + month + '/' + year;
+      document.getElementById('date').textContent = dateString;
+    }
+
+    setInterval(updateTime, 1000);
+  </script>
+</body>
+</html>
+
