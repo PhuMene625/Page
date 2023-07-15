@@ -1,46 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <title>PhuMene's Page</title>
-  
+  <title>PhuMene</title>
   <style>
     body {
       background-color: #1D1F22;
-      margin: 0;
-      padding: 0;
+      font-family: Parisine, Arial, Helvetica, sans-serif;
     }
 
-    #title {
-      text-align: center;
-      font-size: 40px;
-      font-weight: bold;
-      font-style: italic;
-      font-family: sans-serif;
-      margin-top: 75px;
-      color: white;
-    }
-
-    #access-button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 200px;
-      height: 80px;
-      margin: 20px auto;
-      background-color: lightgreen;
-      border: 2px solid darkgreen;
-      border-radius: 5%;
-      font-family: sans-serif;
-      font-size: 30px;
-      color: darkgreen;
-      cursor: pointer;
-    }
-
-    #access-button:hover {
-      background-color: darkgreen;
-      color: white;
-    }
-        #time {
+    #time {
       position: absolute;
       top: 10px;
       right: 10px;
@@ -68,13 +36,53 @@
       font-size: 20px;
       color: yellow;
     }
+
+    h1 {
+      color: white;
+      text-align: center;
+      font-size: 48px;
+    }
+
+    p {
+      color: white;
+      text-align: center;
+      font-size: 24px;
+    }
+    #depression {
+      background-color: red;
+      font-size: 30px;
+      color: black;
+      text-align: center;
+      marging-top: 100px;
+       }
+    #ul {
+      color: white;
+      text-align: center;
+      font-family: sans-serif;
+      font-size: 25px;
+    }
   </style>
 </head>
 <body>
-  <h1 id="title">Bienvenue sur la Page de PhuMene</h1>
-  <a href="bio" id="access-button">Biographie</a>
   <div id="time"></div>
   <div id="date"></div>
+
+  <h1>PhuMene</h1>
+  <p>
+    <p id="depression"><strong><u>En grave dépression périodique. <br> Défense de déranger peu importe la raison.</u></strong></p>
+  <br>
+  <br>
+    <ul id="ul">
+    <li>💖 Fier d'être un allié de la communauté LGBTQIA+ 🏳️‍🌈</li>
+    <li>🛠️ Modérateur de communautés comme <a href="discord.gg/pmd">Paris Métro Driver</a></li>
+      <li>🚇 Passioné des transports en communs (surtout les Trams, Métro et TGV)</li>
+      <li>🖥 Passioné de l'informatique</li>
+      <li>👨‍💻 Je sais développer sans forcément y être à l'aise mais j'apprends chaque jours</li>
+      <li>🎵 Fan de phonk, indie, rock, pop. Un peu de tout en fait.</li>
+      <li>💬 Actif sur Discord depuis 2019</li>
+      <li>❤️‍🔥 J'aime quelqu'une. Qui est-ce? <b>C'est un secret :)</b></li>
+    </ul>
+  </p>
 
   <script>
     function updateTime() {
@@ -97,4 +105,3 @@
   </script>
 </body>
 </html>
-

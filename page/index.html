@@ -18,6 +18,7 @@
       #title {
         text-align: center;
         font-family: Parisine, Arial, Helvetica, sans-serif;
+        color: white;
         margin: 0;
         font-size: 30px;
         margin-top: 10px;
@@ -38,11 +39,12 @@
       .textSectTitle {
         font-family: Parisine, Arial, Helvetica, sans-serif;
         font-size: 20px;
+        color: white;
       }
       .textSectDesc {
         font-family: Parisine, Arial, Helvetica, sans-serif;
         font-size: 15px;
-        color: #323232;
+        color: white;
       }
 
       #img {
@@ -55,11 +57,43 @@
         text-align: center;
         color: #9a9a9a;
       }
+        #time {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: blue;
+      padding: 5px;
+      font-family: sans-serif;
+      font-size: 30px;
+      color: white;
+      border-radius: 5%;
+    }
+
+    #date {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: blue;
+      padding: 5px;
+      font-family: sans-serif;
+      font-size: 30px;
+      color: white;
+      border-radius: 5%;
+    }
+        .seconds {
+      font-size: 20px;
+      color: yellow;
+    }
+      body {
+      background-color: #1D1F22;
+      margin: 0;
+      padding: 0;
+    }
     </style>
   </head>
   <body>
     <img
-      src="https://page.phumene.repl.co/assets/img/logo.png"
+      src="../page/assets/img/logo.png"
       alt=""
       id="logoJeu"
     />
@@ -126,4 +160,26 @@
     ></div>
   </div>
   <div style="all: initial"></div>
+    <div id="time"></div>
+  <div id="date"></div>
+
+  <script>
+    function updateTime() {
+      var now = new Date();
+      var hours = now.getHours().toString().padStart(2, '0');
+      var minutes = now.getMinutes().toString().padStart(2, '0');
+      var seconds = now.getSeconds().toString().padStart(2, '0');
+      var timeString = hours + ':' + minutes;
+      var secondsString = '<span class="seconds">' + seconds + '</span>';
+      document.getElementById('time').innerHTML = timeString + secondsString;
+
+      var day = now.getDate().toString().padStart(2, '0');
+      var month = (now.getMonth() + 1).toString().padStart(2, '0');
+      var year = now.getFullYear();
+      var dateString = day + '/' + month + '/' + year;
+      document.getElementById('date').textContent = dateString;
+    }
+
+    setInterval(updateTime, 1000);
+  </script>
 </html>
