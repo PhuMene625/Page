@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Veille automatique à contrôle de maintien d'appui</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #maintienBouton {
+      background-color: #8B0000; /* Rouge foncé */
+      border: 2px solid #FF0000; /* Bordure rouge claire */
+      color: #000000; /* Texte en noir */
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #maintienBouton:focus {
+      outline: none; /* Supprime le contour lors du focus */
+    }
+
+    #countdownAbove, #countdownBelow {
+      font-size: 20px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Veille automatique à contrôle de maintien d'appui</h1>
+  <div id="countdownAbove">10:00</div>
+  <button id="maintienBouton" onclick="reinitialiserTimer()">Appuyez et maintenez le bouton</button>
+  <div id="countdownBelow">20:00</div>
+
+  <script>
+    let countdownAbove, countdownBelow;
+    let alarme1, alarme2;
+    let timer;
+
+    function reinitialiserTimer() {
+      clearTimeout(timer);
+      countdownAbove.textContent = "10:00";
+      countdownBelow.textContent = "20:00";
+      jouerAlarme1();
+    }
+
+    function updateCountdownAbove() {
+      let timeLeft = parseInt(countdownAbove.textContent) - 1;
+      if (timeLeft >= 0) {
+        countdownAbove.textContent = padDigits(timeLeft);
+        setTimeout(updateCountdownAbove, 1000);
+      }
+    }
+
+    function updateCountdownBelow() {
+      let timeLeft = parseInt(countdownBelow.textContent) - 1;
+      if (timeLeft >= 0) {
+        countdownBelow.textContent = padDigits(timeLeft);
+        setTimeout(updateCountdownBelow, 1000);
+      }
+    }
+
+    function jouerAlarme1() {
+      // Ajoutez ici le code pour jouer la première alarme (audio, animation, etc.)
+      // Par exemple, pour jouer un son :
+      // var audio = new Audio('chemin_vers_le_fichier_audio');
+      // audio.play();
+
+      timer = setTimeout(jouerAlarme2, 600000); // 10 minutes
+      updateCountdownAbove();
+    }
+
+    function jouerAlarme2() {
+      // Ajoutez ici le code pour jouer la deuxième alarme (audio, animation, etc.)
+      // Par exemple, pour jouer un son :
+      // var audio = new Audio('chemin_vers_le_fichier_audio2');
+      // audio.play();
+      updateCountdownBelow();
+    }
+
+    function padDigits(number) {
+      return (number < 10 ? "0" : "") + number;
+    }
+  </script>
+</body>
+</html>
