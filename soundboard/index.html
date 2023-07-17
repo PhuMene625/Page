@@ -50,7 +50,7 @@
   justify-content: center;
   align-items: center;
 }
-button {
+.sound {
     width: 150px;
     height: 150px;
     margin-left: 10px;
@@ -62,46 +62,63 @@ button {
     font-family: sans-serif;
   background-color: #292929;
   }
+        #home-button {
+        position: absolute;
+        top: 15px;
+        right: 125px;
+        background-color: red;
+        padding: 5px;
+        font-family: sans-serif;
+        font-size: 20px;
+        color: white;
+        border-radius: 5%;
+      }
     </style>
   </head>
   <body>
     <div class="container">
      <!-- <div class="center">-->
-      <button id="bluetooth" onClick="play_sound(this.id)">Bluetooth connected</button>
-      <button id="cri-corbeau" onClick="play_sound(this.id)">Cri Corbeau</button>
-      <button id="coudur" onClick="play_sound(this.id)">Coup dur pour Guillaume</button>
-      <button id="Incident_Trafic_Normal" onClick="play_sound(this.id)">Incident Trafic Normal</button>
-      <button id="je_suis_Amaury" onClick="play_sound(this.id)">Je suis Amaury</button>
-        <button id="demarrage_val" onClick="play_sound(this.id)">Val Auugh</button>
-        <button id="CuidadoPisse"
+      <button class="sound" id="bluetooth" onClick="play_sound(this.id)">Bluetooth connected</button>
+      <button class="sound" id="cri-corbeau" onClick="play_sound(this.id)">Cri Corbeau</button>
+      <button class="sound" id="coudur" onClick="play_sound(this.id)">Coup dur pour Guillaume</button>
+      <button class="sound" id="Incident_Trafic_Normal" onClick="play_sound(this.id)">Incident Trafic Normal</button>
+      <button class="sound" id="je_suis_Amaury" onClick="play_sound(this.id)">Je suis Amaury</button>
+        <button class="sound" id="demarrage_val" onClick="play_sound(this.id)">Val Auugh</button>
+        <button class="sound" id="CuidadoPisse"
 onclick="play_sound(this.id)">Cuicado Pisse </button>
-        <button id="marcel-sembat"
+        <button class="sound" id="marcel-sembat"
 onclick="play_sound(this.id)">Marcel Sembat</button>
-        <button id="MindBarbara"
+        <button class="sound" id="MindBarbara"
 onclick="play_sound(this.id)">Mind Barbara</button>
-        <button id="Porte_de_mon_c..._"
+        <button class="sound" id="Porte_de_mon_c..._"
 onclick="play_sound(this.id)">Porte de mon cul</button>
-        <button id="Porte-de-la-chaise-2"
+        <button class="sound" id="Porte-de-la-chaise-2"
 onclick="play_sound(this.id)">Porte de la chaise</button>
-        <button id="TOP_H_10H_RDT"
+        <button class="sound" id="TOP_H_10H_RDT"
 onclick="play_sound(this.id)">10H RDT </button>
-        <button id="vibreur_m3_hillarant"
+        <button class="sound" id="vibreur_m3_hillarant"
 onclick="play_sound(this.id)">Vibreur Hillarant M3</button>
-        <button id="Windows_Hardware_Remove"
+        <button class="sound" id="Windows_Hardware_Remove"
 onclick="play_sound(this.id)">Windows Hardware Remove</button>
         
    <!-- </div>-->
     </div>
       <div id="time"></div>
   <div id="date"></div>
+   <a href="../index.html"  <button id="home-button">Home</button> </a>
+    </div>
   </body>
   <script>
     function play_sound(clicked_id) {
     var audio = new Audio('assets/' + clicked_id + ".mp3");
     console.log('Played ' + clicked_id + ".mp3")
     audio.play();
-  }
+    }
+
+  
+  
 </script>
+
   <script>
     function updateTime() {
       var now = new Date();
