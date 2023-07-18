@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LA VACMA</title>
+  <title>VACMA 2</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -19,7 +19,7 @@
       border: 2px solid #FF0000;
       color: white; 
       padding: 10px 20px;
-      font-size: 30px;
+      font-size: 50px;
       cursor: pointer;
       
     }
@@ -29,10 +29,11 @@
     }
 
     #timerDisplay {
-      font-size: 20px;
+      font-size: 30px;
       color: white;
       margin: 10px;
     }
+    
       #time {
       position: absolute;
       top: 10px;
@@ -63,12 +64,11 @@
   </style>
 </head>
 <body>
-  <h1>VACMA</h1>
+  <h1>VACMA 2</h1>
   <div id="timerDisplay">0</div>
-  <button id="maintienBouton" onclick="reinitialiserTimer()">Bouton VACMA</button>
+  <button id="maintienBouton" onclick="reinitialiserTimer()">Acquitter</button>
   <div id="time"></div>
   <div id="date"></div>
-
   <script>
     let timer = 0;
     let sound1, sound2;
@@ -91,7 +91,7 @@
         if (timer > 9) {
           playSound2();
         }
-      }, 60000);
+      }, 5000);
     }
 
     function playSound1() {
