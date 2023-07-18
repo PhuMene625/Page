@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LA VACMA</title>
+  <title>VACMA</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -60,23 +60,84 @@
       font-size: 20px;
       color: yellow;
     }
+       .container {
+      position: absolute;
+      left: 20px; 
+      top: 20%; 
+    }
+
+    .signal {
+      width: 75px;
+      height: 275px;
+      background-color: black;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+    }
+
+    .circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin: 5px;
+      transition: background-color 0.25s;
+      background-color: #6B6B6B;
+    }
+
+    .red.active {
+      background-color: red;
+    }
+
+    .yellow.active {
+      background-color: yellow;
+    }
+
+    .green.active {
+      background-color: lightgreen;
+    }
+      #stop {
+      position: absolute;
+      top: 40x;
+      right: 10px;
+      background-color: green;
+      padding: 5px;
+      font-family: sans-serif;
+      font-size: 30px;
+      color: white;
+      border-radius: 5%;
   </style>
 </head>
 <body>
   <h1>VACMA</h1>
+    <button id="stop" onclick="stop()">Stop</button>
   <div id="timerDisplay">0</div>
   <button id="maintienBouton" onclick="reinitialiserTimer()">Bouton VACMA</button>
   <div id="time"></div>
   <div id="date"></div>
+    <div class="container">
+    <div class="signal">
+      <div class="circle red" id="redSignal"></div>
+      <div class="circle yellow" id="yellowSignal"></div>
+      <div class="circle green" id="greenSignal"></div>
+    </div>
+  </div>
 
-  <script>
+  <script> //Comportement de la vacma
     let timer = 0;
     let sound1, sound2;
     let interval;
     const timerDisplay = document.getElementById('timerDisplay');
 
     function reinitialiserTimer() {
-      sound0 = new Audio('https://page.phumene.repl.co/vacma/sounds/Beep.mp3')
+      resetTimer();
+      setTimeout(blinkGreenSignal, 500);
+      stopBlinkingGreenSignal();
+    }
+      function resetTimer() {
+        sound0 = new Audio('https://page.phumene.repl.co/vacma/sounds/Beep.mp3')
       sound0.play();
       clearInterval(interval);
       timer = 0;
@@ -99,6 +160,7 @@
         sound1 = new Audio('https://page.phumene.repl.co/vacma/sounds/Vigilance.mp3');
         sound1.loop = true;
         sound1.play();
+        turnOnYellowSignal();
       }
     }
 
@@ -107,6 +169,7 @@
         sound2 = new Audio('https://page.phumene.repl.co/vacma/sounds/Sonneriechiante.mp3');
         sound2.loop = true;
         sound2.play();
+        blinkRedSignal();
       }
     }
 
@@ -114,18 +177,30 @@
       if (sound1) {
         sound1.pause();
         sound1.currentTime = 0;
+        turnOffYellowSignal();
+        
       }
       if (sound2) {
         sound2.pause();
         sound2.currentTime = 0;
+        stopBlinkingRedSignal();
       }
     }
 
     function updateTimerDisplay() {
       timerDisplay.textContent = timer.toString();
     }
+    function stop() {
+      scream = new Audio ('https://page.phumene.repl.co/soundboard/assets/cri-corbeau.mp3')
+      scream.play();
+      clearInterval(interval);
+      timer = 0;
+      timerDisplay.textContent = "0";
+      stopSounds();
+      stopBlinkingGreenSignal();
+    }
   </script>
-    <script>
+    <script> //Heure et date
     function updateTime() {
       var now = new Date();
       var hours = now.getHours().toString().padStart(2, '0');
@@ -143,6 +218,42 @@
     }
 
     setInterval(updateTime, 1000);
+  </script>
+    <script> //Le signal mdr
+    // Function pour le rouge
+    function blinkRedSignal() {
+      const redSignal = document.getElementById('redSignal');
+        redSignal.classList.add('active');
+    }
+
+    // Function pour arreter le signall rouge
+    function stopBlinkingRedSignal() {
+      document.getElementById('redSignal').classList.remove('active');
+    }
+
+    // Function pour allumer le signal
+    function turnOnYellowSignal() {
+      document.getElementById('yellowSignal').classList.add('active');
+    }
+
+    // Function pour arreter le jaune
+    function turnOffYellowSignal() {
+      document.getElementById('yellowSignal').classList.remove('active');
+    }
+
+    // Clignoter vert
+    function blinkGreenSignal() {
+      const greenSignal = document.getElementById('greenSignal');
+      greenSignalInterval = setInterval(() => {
+        greenSignal.classList.toggle('active');
+      }, 1000);
+    }
+
+    // Stop clignoter vert
+    function stopBlinkingGreenSignal() {
+      clearInterval(greenSignalInterval);
+      document.getElementById('greenSignal').classList.remove('active');
+    }
   </script>
 </body>
 </html>
